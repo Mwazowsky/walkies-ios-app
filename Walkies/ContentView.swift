@@ -8,17 +8,26 @@
 import SwiftUI
 
 struct ContentView: View {
+    @State private var isShowingSheet = false
+    
+    @State var modalPresented = false
+    
     var body: some View {
         VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, world!")
+            RingButton(
+                label: "Estimate",
+                icon: "flame.fill",
+                percent: 80,
+                size: 150.0,
+                strokeWidth: 15,
+                fillColor: LinearGradient(gradient: Gradient(colors: [.buttonRingTwo, .buttonRingOne]), startPoint: .top, endPoint: .bottom),
+                isShowingSheet: $isShowingSheet
+            )
         }
-        .padding()
+        .preferredColorScheme(.dark)
     }
 }
 
 #Preview {
-    ContentView()
+    MainView()
 }
