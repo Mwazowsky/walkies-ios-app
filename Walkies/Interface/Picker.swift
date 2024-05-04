@@ -8,24 +8,52 @@
 import Foundation
 import SwiftUI
 
-enum ActivityType {
-    case running
-    case walking
-    case jogging
-    case hiking
-}
+
 
 struct PickerView: View {
-    @Binding var activityType: ActivityType
+    @ObservedObject var vm: FormData
     
     var body: some View {
-        Picker("", selection: $activityType) {
-            Text("Running").tag(ActivityType.running)
-            Text("Walking").tag(ActivityType.walking)
-            Text("Jogging").tag(ActivityType.jogging)
-            Text("Hiking").tag(ActivityType.hiking)
+        Picker("", selection: $vm.newFormData.activityDetails.activityType) {
+            ForEach(newFormData.ActivityDetails.ActivityType.allCases, id: \.self) { type in
+                Text(type.rawValue).tag(type)
+            }
         }
         .pickerStyle(WheelPickerStyle())
         .navigationTitle("Select Activity Type")
     }
 }
+
+struct HistoryDatePicker: View {
+    @Binding var selectedDate: Date
+    
+    let dateRange: ClosedRange<Date> = {
+        let calendar = Calendar.current
+        let startComponents = DateComponents(year: 2021, month: 1, day: 1)
+        let endComponents = DateComponents(year: 2021, month: 12, day: 30)
+        return calendar.date(from:startComponents)!
+        ...
+        calendar.date(from:endComponents)!
+    }()
+    
+    var body: some View {
+        VStack {
+            DatePicker(
+                "Pick a date",
+                selection: $selectedDate,
+                in: dateRange,
+                displayedComponents: [.date])
+                .padding()
+                .datePickerStyle(.wheel)
+            
+            Text("Selected Date: \(formattedDate)")
+        }
+    }
+    
+    private var formattedDate: String {
+        let formatter = DateFormatter()
+        formatter.dateStyle = .medium
+        return formatter.string(from: selectedDate)
+    }
+}
+

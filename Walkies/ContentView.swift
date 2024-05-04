@@ -12,6 +12,9 @@ struct ContentView: View {
     
     @State var modalPresented = false
     
+    @State private var showAlert = false
+    @State private var linkActive = false // Declare linkActive as State
+    
     var body: some View {
         VStack {
             RingButton(
@@ -21,7 +24,9 @@ struct ContentView: View {
                 size: 150.0,
                 strokeWidth: 15,
                 fillColor: LinearGradient(gradient: Gradient(colors: [.buttonRingTwo, .buttonRingOne]), startPoint: .top, endPoint: .bottom),
-                isShowingSheet: $isShowingSheet
+                isShowingSheet: $isShowingSheet,
+                linkActive: $linkActive,
+                showAlert: $showAlert
             )
         }
         .preferredColorScheme(.dark)

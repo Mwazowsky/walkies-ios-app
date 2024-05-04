@@ -13,152 +13,150 @@ struct ResultView: View {
     @State var modalPresented = false
     
     var body: some View {
-        NavigationStack {
-            ScrollView {
+        ScrollView {
+            VStack(alignment: .center, content: {
+                Section(
+                ) {
+                    CardView()
+                }
+                
                 VStack(alignment: .center, content: {
-                    Section(
-                    ) {
-                        CardView()
-                    }
-                    
-                    VStack(alignment: .center, content: {
-                        ZStack {
-                            RingShape(percent: 80, startAngle: -90, drawnClockwise: false)
-                                .stroke(style: StrokeStyle(lineWidth: 15, lineCap: .round))
-                                .fill(LinearGradient(gradient: Gradient(colors: [.buttonRingTwo, .buttonRingOne]), startPoint: .top, endPoint: .bottom))
-                                .frame(width: 180, height: 180)
-                            
-                            
-                            VStack(alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/, content: {
-                                Text("320 cal")
-                                    .font(.title)
-                                    .fontWeight(.heavy)
-                                Text("Active calories")
-                                    .font(.subheadline)
-                                    .foregroundColor(.white)
-                                    .fontWeight(.semibold)
-                            })
-                            
-                        }
-                        .padding(.bottom, 30)
+                    ZStack {
+                        RingShape(percent: 80, startAngle: -90, drawnClockwise: false)
+                            .stroke(style: StrokeStyle(lineWidth: 15, lineCap: .round))
+                            .fill(LinearGradient(gradient: Gradient(colors: [.buttonRingTwo, .buttonRingOne]), startPoint: .top, endPoint: .bottom))
+                            .frame(width: 180, height: 180)
                         
-                        HStack(alignment: .center, content: {
-                            VStack(alignment: .center, content: {
-                                ZStack(content: {
-                                    RingShape(percent: 80, startAngle: -90, drawnClockwise: false)
-                                        .stroke(style: StrokeStyle(lineWidth: 5, lineCap: .round))
-                                        .fill(LinearGradient(gradient: Gradient(colors: [.buttonRingThree, .buttonRingThree]), startPoint: .top, endPoint: .bottom))
-                                    
-                                    Text("6540")
-                                        .font(.subheadline)
+                        
+                        VStack(alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/, content: {
+                            Text("320 cal")
+                                .font(.title)
+                                .fontWeight(.heavy)
+                            Text("Active calories")
+                                .font(.subheadline)
+                                .foregroundColor(.white)
+                                .fontWeight(.semibold)
+                        })
+                        
+                    }
+                    .padding(.bottom, 30)
+                    
+                    HStack(alignment: .center, content: {
+                        VStack(alignment: .center, content: {
+                            ZStack(content: {
+                                RingShape(percent: 80, startAngle: -90, drawnClockwise: false)
+                                    .stroke(style: StrokeStyle(lineWidth: 5, lineCap: .round))
+                                    .fill(LinearGradient(gradient: Gradient(colors: [.buttonRingThree, .buttonRingThree]), startPoint: .top, endPoint: .bottom))
+                                
+                                Text("6540")
+                                    .font(.subheadline)
+                                    .fontWeight(.heavy)
+                            })
+                            .padding(.bottom, 10)
+                            
+                            Text("Steps")
+                                .fontWeight(.semibold)
+                        })
+                        Spacer()
+                        
+                        VStack(alignment: .center, content: {
+                            ZStack(content: {
+                                RingShape(percent: 80, startAngle: -90, drawnClockwise: false)
+                                    .stroke(style: StrokeStyle(lineWidth: 5, lineCap: .round))
+                                    .fill(LinearGradient(gradient: Gradient(colors: [.buttonRingOne, .buttonRingOne]), startPoint: .top, endPoint: .bottom))
+                                
+                                VStack(content: {
+                                    Text("720")
+                                        .font(.callout)
                                         .fontWeight(.heavy)
-                                })
-                                .padding(.bottom, 10)
-                                
-                                Text("Steps")
-                                    .fontWeight(.semibold)
-                            })
-                            Spacer()
-                            
-                            VStack(alignment: .center, content: {
-                                ZStack(content: {
-                                    RingShape(percent: 80, startAngle: -90, drawnClockwise: false)
-                                        .stroke(style: StrokeStyle(lineWidth: 5, lineCap: .round))
-                                        .fill(LinearGradient(gradient: Gradient(colors: [.buttonRingOne, .buttonRingOne]), startPoint: .top, endPoint: .bottom))
                                     
-                                    VStack(content: {
-                                        Text("720")
-                                            .font(.callout)
-                                            .fontWeight(.heavy)
-                                        
-                                        Text("bpm")
-                                            .font(.callout)
-                                            .fontWeight(.heavy)
-                                    })
-                                })
-                                .padding(.bottom, 10)
-                                
-                                Text("Heart Rate")
-                                    .fontWeight(.semibold)
-                            })
-                            Spacer()
-                            
-                            VStack(alignment: .center, content: {
-                                ZStack(content: {
-                                    RingShape(percent: 80, startAngle: -90, drawnClockwise: false)
-                                        .stroke(style: StrokeStyle(lineWidth: 5, lineCap: .round))
-                                        .fill(LinearGradient(gradient: Gradient(colors: [.buttonRingTwo, .buttonRingTwo]), startPoint: .top, endPoint: .bottom))
-                                    
-                                    Text("12 min")
+                                    Text("bpm")
                                         .font(.callout)
                                         .fontWeight(.heavy)
                                 })
-                                
-                                .padding(.bottom, 10)
-                                
-                                Text("Time")
-                                    .fontWeight(.semibold)
                             })
+                            .padding(.bottom, 10)
+                            
+                            Text("Heart Rate")
+                                .fontWeight(.semibold)
                         })
-                        .frame(maxWidth: .infinity, minHeight: 120)
-                        .padding(.horizontal, 30)
-                        .padding(.bottom, 30)
+                        Spacer()
                         
-                        HStack(alignment: .center, content: {
-                            Button {
+                        VStack(alignment: .center, content: {
+                            ZStack(content: {
+                                RingShape(percent: 80, startAngle: -90, drawnClockwise: false)
+                                    .stroke(style: StrokeStyle(lineWidth: 5, lineCap: .round))
+                                    .fill(LinearGradient(gradient: Gradient(colors: [.buttonRingTwo, .buttonRingTwo]), startPoint: .top, endPoint: .bottom))
                                 
-                            } label: {
-                                Text("Save Result")
-                                    .fontWeight(.semibold)
-                                    .fontWeight(.regular)
-                                    .foregroundColor(.buttonRingTwo)
-                                    .multilineTextAlignment(.center)
-                                Image(systemName: "bookmark.circle.fill")
-                                    .resizable()
-                                    .aspectRatio(contentMode: .fit)
-                                    .frame(width: 22, height: 22)
-                                    .foregroundColor(.buttonRingTwo)
-                            }
-                            .buttonStyle(.bordered)
-                            .background(.black)
-                            .cornerRadius(25)
+                                Text("12 min")
+                                    .font(.callout)
+                                    .fontWeight(.heavy)
+                            })
                             
-                            Spacer()
+                            .padding(.bottom, 10)
                             
-                            Button {
-                                
-                            } label: {
-                                Text("Reset Input")
-                                    .fontWeight(.semibold)
-                                    .foregroundColor(.red)
-                                    .multilineTextAlignment(.center)
-                                Image(systemName: "arrow.counterclockwise.circle.fill")
-                                    .resizable()
-                                    .aspectRatio(contentMode: .fit)
-                                    .frame(width: 22, height: 22)
-                                    .foregroundColor(.red)
-                            }
-                            .buttonStyle(.bordered)
-                            .background(.black)
-                            .cornerRadius(25)
+                            Text("Time")
+                                .fontWeight(.semibold)
                         })
-                        .padding(.horizontal, 30)
-                        .padding(.bottom, 30)
                     })
+                    .frame(maxWidth: .infinity, minHeight: 120)
+                    .padding(.horizontal, 30)
+                    .padding(.bottom, 30)
+                    
+                    HStack(alignment: .center, content: {
+                        Button {
+                            
+                        } label: {
+                            Text("Save Result")
+                                .fontWeight(.semibold)
+                                .fontWeight(.regular)
+                                .foregroundColor(.buttonRingTwo)
+                                .multilineTextAlignment(.center)
+                            Image(systemName: "bookmark.circle.fill")
+                                .resizable()
+                                .aspectRatio(contentMode: .fit)
+                                .frame(width: 22, height: 22)
+                                .foregroundColor(.buttonRingTwo)
+                        }
+                        .buttonStyle(.bordered)
+                        .background(.black)
+                        .cornerRadius(25)
+                        
+                        Spacer()
+                        
+                        Button {
+                            
+                        } label: {
+                            Text("Re-estimate")
+                                .fontWeight(.semibold)
+                                .foregroundColor(.red)
+                                .multilineTextAlignment(.center)
+                            Image(systemName: "arrow.counterclockwise.circle.fill")
+                                .resizable()
+                                .aspectRatio(contentMode: .fit)
+                                .frame(width: 22, height: 22)
+                                .foregroundColor(.red)
+                        }
+                        .buttonStyle(.bordered)
+                        .background(.black)
+                        .cornerRadius(25)
+                    })
+                    .padding(.horizontal, 30)
+                    .padding(.bottom, 30)
                 })
-                .navigationTitle("Results")
-                .navigationBarTitleDisplayMode(.inline)
-                
-            }
-            .padding(.top, 5)
+            })
+            .navigationTitle("Results")
+            .navigationBarTitleDisplayMode(.inline)
+            
         }
+        .padding(.top, 5)
+        
     }
 }
 
 struct CardView: View {
-    @State private var age: Int?
-    @State private var weight: Double?
-    @State private var bpm: Int?
+    
+    @StateObject var vm = FormData()
     
     private static let formatter: NumberFormatter = {
         let formatter = NumberFormatter()
@@ -173,16 +171,16 @@ struct CardView: View {
                     .fontWeight(.semibold)
                     .foregroundColor(.textSecondary)
                 Spacer()
-                TextField("Years", value: $age, formatter: Self.formatter)
-                    .multilineTextAlignment(.trailing)
-                    .keyboardType(.numberPad)
+                Text(vm.newFormData.physicalDetails.age)
+                    .fontWeight(.semibold)
+                    .foregroundColor(.bgOne)
             }
             HStack() {
                 Text("Weight")
                     .fontWeight(.semibold)
                     .foregroundColor(.textSecondary)
                 Spacer()
-                TextField("Kg", value: $weight, formatter: Self.formatter)
+                TextField("Kg", value: $vm.newFormData.physicalDetails.weight, formatter: Self.formatter)
                     .multilineTextAlignment(.trailing)
                     .keyboardType(.numberPad)
             }
@@ -191,43 +189,30 @@ struct CardView: View {
                     .fontWeight(.semibold)
                     .foregroundColor(.textSecondary)
                 Spacer()
-                TextField("Beat per minute", value: $bpm, formatter: Self.formatter)
+                TextField("Beat per minute", value: $vm.newFormData.physicalDetails.bpm, formatter: Self.formatter)
                     .multilineTextAlignment(.trailing)
                     .keyboardType(.numberPad)
             }
-            HStack() {
-                Text("Activity Type")
-                    .fontWeight(.semibold)
-                    .foregroundColor(.textSecondary)
-                Spacer()
-                TextField("Years", value: $age, formatter: Self.formatter)
-                    .multilineTextAlignment(.trailing)
-                    .keyboardType(.numberPad)
-            }
-            HStack() {
+            Toggle(isOn: $vm.newFormData.activityDetails.isOnTreadmill) {
                 Text("On Treadmill")
                     .fontWeight(.semibold)
                     .foregroundColor(.textSecondary)
-                Spacer()
-                TextField("Kg", value: $weight, formatter: Self.formatter)
-                    .multilineTextAlignment(.trailing)
-                    .keyboardType(.numberPad)
             }
             HStack() {
                 Text("Run Distance")
                     .fontWeight(.semibold)
                     .foregroundColor(.textSecondary)
                 Spacer()
-                TextField("Beat per minute", value: $bpm, formatter: Self.formatter)
+                TextField("", value: $vm.newFormData.activityDetails.distance, formatter: Self.formatter)
                     .multilineTextAlignment(.trailing)
                     .keyboardType(.numberPad)
             }
             HStack() {
-                Text("Resting Heart Rate")
+                Text("Surface Grade")
                     .fontWeight(.semibold)
                     .foregroundColor(.textSecondary)
                 Spacer()
-                TextField("Beat per minute", value: $bpm, formatter: Self.formatter)
+                TextField("", value: $vm.newFormData.activityDetails.surfGrade, formatter: Self.formatter)
                     .multilineTextAlignment(.trailing)
                     .keyboardType(.numberPad)
             }
@@ -235,6 +220,16 @@ struct CardView: View {
         .padding()
         .padding(.bottom, 20)
         .frame(maxWidth: /*@START_MENU_TOKEN@*/.infinity/*@END_MENU_TOKEN@*/)
+    }
+}
+
+struct BlankCardView: View {
+    
+    var body: some View {
+        GroupBox{
+            Spacer()
+                .frame(width: 360, height: 200)
+        }
     }
 }
 

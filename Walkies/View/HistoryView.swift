@@ -8,12 +8,31 @@
 import Foundation
 import SwiftUI
 
+struct SheetView: View {
+    let title: String
+    var body: some View {
+        NavigationView {
+            List {
+                ForEach(0..<30) { item in
+                    Text("Item \(item)")
+                }
+            }
+            .listStyle(.plain)
+            .navigationTitle(title)
+        }
+    }
+}
+
 struct HistoryView: View {
+    @State private var currentDrag: CGFloat = 0
+    @State private var stateDrag: CGFloat = -300
+    
+    let minDrag: CGFloat = -UIScreen.main.bounds.height + 120
     
     var body: some View {
-        NavigationStack {
+        NavigationView {
             ScrollView {
-                VStack(alignment: .center, content: {
+                VStack(alignment: .leading, content: {
                     VStack(alignment: .center, content: {
                         ZStack {
                             RingShape(percent: 80, startAngle: -90, drawnClockwise: false)
@@ -22,7 +41,7 @@ struct HistoryView: View {
                                 .frame(width: 180, height: 180)
                             
                             
-                            VStack(alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/, content: {
+                            VStack(alignment: .center, content: {
                                 Text("320 cal")
                                     .font(.title)
                                     .fontWeight(.heavy)
@@ -164,11 +183,16 @@ struct HistoryView: View {
                 })
                 .navigationTitle("History")
                 .navigationBarTitleDisplayMode(.inline)
-                
+                .padding(.top, 20)
             }
+        }
+        .safeAreaInset(edge: .top) {
+            HistoryCardView()
+                .edgesIgnoringSafeArea(.top)
             
         }
     }
+    
 }
 
 #Preview {

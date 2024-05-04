@@ -53,17 +53,13 @@ struct RingButton: View {
     var size: Double
     var strokeWidth: Double
     var fillColor: LinearGradient
+    
     @Binding var isShowingSheet: Bool
     
-    @State private var age: Int?
-    @State private var weight: Double?
-    @State private var bpm: Int?
-    @State private var distance: Double?
-    @State private var surfGrade: Int?
+    @StateObject var vm = FormData()
     
-    @State private var activityType: ActivityType = .running
-    
-    @State var isOnTreadmill: Bool = false
+    @Binding var linkActive : Bool
+    @Binding var showAlert : Bool
     
     private static let formatter: NumberFormatter = {
         let formatter = NumberFormatter()
@@ -72,142 +68,162 @@ struct RingButton: View {
     }()
     
     var body: some View {
-        Button(action: {
-            isShowingSheet.toggle()
-        }) {
-            VStack {
-                Image(systemName: icon)
-                    .resizable()
-                    .aspectRatio(contentMode: .fit)
-                    .frame(width: 45, height: 45)
-                    .padding()
-                    .foregroundColor(.fgFlame)
-                Text(label)
-                    .font(.system(.body, design: .rounded))
-                    .fontWeight(.heavy)
+        NavigationStack {
+            Button(action: {
+                isShowingSheet.toggle()
+            }) {
+                
+                VStack {
+                    Image(systemName: icon)
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
+                        .frame(width: 45, height: 45)
+                        .padding()
+                        .foregroundColor(.fgFlame)
+                    Text(label)
+                        .font(.system(.body, design: .rounded))
+                        .fontWeight(.heavy)
+                }
+                .frame(width: size, height: size)
+                .padding()
+                .background(
+                    RingShape(percent: percent, startAngle: -90, drawnClockwise: false)
+                        .stroke(style: StrokeStyle(lineWidth: strokeWidth, lineCap: .round))
+                        .fill(fillColor)
+                )
+                .foregroundColor(.white)
+                .navigationDestination(
+                    isPresented: $linkActive) {
+                        ResultView()
+                    }
             }
-            .frame(width: size, height: size)
-            .padding()
-            .background(
-                RingShape(percent: percent, startAngle: -90, drawnClockwise: false)
-                    .stroke(style: StrokeStyle(lineWidth: strokeWidth, lineCap: .round))
-                    .fill(fillColor)
-            )
-            .foregroundColor(.white)
             
         }
         .sheet(isPresented: $isShowingSheet,
                onDismiss: didDismiss) {
-            NavigationStack {
-                VStack(alignment: .leading) {
-                    HStack {
-                        Button {
-                            
-                        } label: {
-                            Text("Done")
-                                .fontWeight(.bold)
-                                .foregroundColor(/*@START_MENU_TOKEN@*/.blue/*@END_MENU_TOKEN@*/)
-                        }
-                        .buttonStyle(.plain)
-                        
-                        Spacer()
-                        
-                        Button {
-                            isShowingSheet.toggle()
-                        } label: {
-                            Image(systemName: "x.circle.fill")
-                                .resizable()
-                                .aspectRatio(contentMode: .fit)
-                                .frame(width: 25, height: 25)
-                                .foregroundColor(.bgOne)
-                        }
-                        
-                    }
-                    .padding(.top, 30)
-                    .padding(.horizontal, 30)
+            VStack(alignment: .leading) {
+                HStack {
+                    Spacer()
                     
-                    Form {
-                        Section(header:
-                                    Text("Physical Details")
-                            .fontWeight(.bold)
-                            .font(.subheadline)
-                            .multilineTextAlignment(/*@START_MENU_TOKEN@*/.leading/*@END_MENU_TOKEN@*/)
-                        ) {
-                            HStack() {
-                                Text("Age")
-                                    .fontWeight(.semibold)
-                                    .foregroundColor(.textSecondary)
-                                Spacer()
-                                TextField("Years", value: $age, formatter: Self.formatter)
-                                    .multilineTextAlignment(.trailing)
-                                    .keyboardType(.numberPad)
-                            }
-                            HStack() {
-                                Text("Weight")
-                                    .fontWeight(.semibold)
-                                    .foregroundColor(.textSecondary)
-                                Spacer()
-                                TextField("Kg", value: $weight, formatter: Self.formatter)
-                                    .multilineTextAlignment(.trailing)
-                                    .keyboardType(.numberPad)
-                            }
-                            HStack() {
-                                Text("Resting Heart Rate")
-                                    .fontWeight(.semibold)
-                                    .foregroundColor(.textSecondary)
-                                Spacer()
-                                TextField("Beat per minute", value: $bpm, formatter: Self.formatter)
-                                    .multilineTextAlignment(.trailing)
-                                    .keyboardType(.numberPad)
-                            }
+                    Button {
+                        showAlert = true
+                    } label: {
+                        Image(systemName: "x.circle.fill")
+                            .resizable()
+                            .aspectRatio(contentMode: .fit)
+                            .frame(width: 25, height: 25)
+                            .foregroundColor(.bgOne)
+                    }
+                    
+                }
+                .padding(.top, 30)
+                .padding(.horizontal, 30)
+                
+                Form {
+                    Section(header:
+                                Text("Physical Details")
+                        .fontWeight(.bold)
+                        .font(.subheadline)
+                        .multilineTextAlignment(/*@START_MENU_TOKEN@*/.leading/*@END_MENU_TOKEN@*/)
+                    ) {
+                        HStack() {
+                            Text("Age")
+                                .fontWeight(.semibold)
+                                .foregroundColor(.textSecondary)
+                            Spacer()
+                            TextField("Years", text: $vm.newFormData.physicalDetails.age)
+                                .multilineTextAlignment(.trailing)
+                                .keyboardType(.numberPad)
                         }
-                        
-                        Section(header:
-                                    Text("Activity Details")
-                            .fontWeight(.bold)
-                            .font(.subheadline)
-                            .multilineTextAlignment(/*@START_MENU_TOKEN@*/.leading/*@END_MENU_TOKEN@*/)
-                        ) {
-                            NavigationLink(destination: PickerView(activityType: $activityType)) {
-                                HStack {
-                                    Text("Activity Type: ")
-                                        .fontWeight(.semibold)
-                                        .foregroundColor(.textSecondary)
-                                    Spacer()
-                                    Text(activityTypeString())
-                                        .foregroundColor(.blue)
-                                }
-                            }
-                            
-                            Toggle(isOn: $isOnTreadmill) {
-                                Text("On Treadmill")
-                                    .fontWeight(.semibold)
-                                    .foregroundColor(.textSecondary)
-                            }
-                            HStack() {
-                                Text("Run Distance")
-                                    .fontWeight(.semibold)
-                                    .foregroundColor(.textSecondary)
-                                Spacer()
-                                TextField("Km", value: $distance, formatter: Self.formatter)
-                                    .multilineTextAlignment(.trailing)
-                                    .keyboardType(.numberPad)
-                            }
-                            HStack() {
-                                Text("Surface Grade")
-                                    .fontWeight(.semibold)
-                                    .foregroundColor(.textSecondary)
-                                Spacer()
-                                TextField("%", value: $surfGrade, formatter: Self.formatter)
-                                    .multilineTextAlignment(.trailing)
-                                    .keyboardType(.numberPad)
-                            }
+                        HStack() {
+                            Text("Weight")
+                                .fontWeight(.semibold)
+                                .foregroundColor(.textSecondary)
+                            Spacer()
+                            TextField("Kg", text: $vm.newFormData.physicalDetails.weight)
+                                .multilineTextAlignment(.trailing)
+                                .keyboardType(.numberPad)
                         }
+                        HStack() {
+                            Text("Resting Heart Rate")
+                                .fontWeight(.semibold)
+                                .foregroundColor(.textSecondary)
+                            Spacer()
+                            TextField("Beat per minute", text: $vm.newFormData.physicalDetails.bpm)
+                                .multilineTextAlignment(.trailing)
+                                .keyboardType(.numberPad)
+                        }
+                    }
+                    //
+                    Section(header:
+                                Text("Activity Details")
+                        .fontWeight(.bold)
+                        .font(.subheadline)
+                        .multilineTextAlignment(/*@START_MENU_TOKEN@*/.leading/*@END_MENU_TOKEN@*/)
+                    ) {
+                        DisclosureGroup(
+                            content: { PickerView(vm: vm) },
+                            label: { HStack {
+                                Text("Activity Type: ")
+                                    .fontWeight(.semibold)
+                                    .foregroundColor(.textSecondary)
+                                Spacer()
+                                Text(activityTypeString())
+                                    .foregroundColor(.blue)
+                            } }
+                        )
+                        .frame(width: 300)
                         
-                        Section() {
+                        Toggle(isOn: $vm.newFormData.activityDetails.isOnTreadmill) {
+                            Text("On Treadmill")
+                                .fontWeight(.semibold)
+                                .foregroundColor(.textSecondary)
+                        }
+                        HStack() {
+                            Text("Run Distance")
+                                .fontWeight(.semibold)
+                                .foregroundColor(.textSecondary)
+                            Spacer()
+                            TextField("Km", text: $vm.newFormData.activityDetails.distance)
+                                .multilineTextAlignment(.trailing)
+                                .keyboardType(.numberPad)
+                        }
+                        HStack() {
+                            Text("Surface Grade")
+                                .fontWeight(.semibold)
+                                .foregroundColor(.textSecondary)
+                            Spacer()
+                            TextField("%", text: $vm.newFormData.activityDetails.surfGrade)
+                                .multilineTextAlignment(.trailing)
+                                .keyboardType(.numberPad)
+                        }
+                    }
+                    
+                    Section {
+                        VStack {
                             Button {
-                                
+                                isShowingSheet.toggle()
+                                self.linkActive = true
                             } label: {
+                                Spacer()
+                                Text("Estimate")
+                                    .fontWeight(.regular)
+                                    .foregroundColor(.buttonRingTwo)
+                                    .multilineTextAlignment(.center)
+                                Image(systemName: "flame.fill")
+                                    .resizable()
+                                    .aspectRatio(contentMode: .fit)
+                                    .frame(width: 22, height: 22)
+                                    .foregroundColor(.buttonRingTwo)
+                                Spacer()
+                            }
+                            .buttonStyle(.bordered)
+                            .padding(.bottom, 5)
+                            
+                            Button {
+                                resetForm()
+                            } label: {
+                                Spacer()
                                 Text("Reset Input")
                                     .fontWeight(.regular)
                                     .foregroundColor(.red)
@@ -217,19 +233,32 @@ struct RingButton: View {
                                     .aspectRatio(contentMode: .fit)
                                     .frame(width: 22, height: 22)
                                     .foregroundColor(.red)
+                                Spacer()
                             }
-                            .buttonStyle(.plain)
-                            .frame(minWidth: 0, maxWidth: .infinity)
+                            .buttonStyle(.bordered)
+                            
                         }
-                        
                     }
+                    .padding(.vertical, 5)
                 }
+            }
+            .alert(isPresented: $showAlert) {
+                Alert(
+                    title: Text("Are you sure you want to close?"),
+                    message: Text("Closing will discard any changes."),
+                    primaryButton: .destructive(Text("Close")) {
+                        isShowingSheet.toggle()
+                    },
+                    secondaryButton: .cancel()
+                )
             }
         }
     }
     
+    
+    
     func activityTypeString() -> String {
-        switch activityType {
+        switch vm.newFormData.activityDetails.activityType {
         case .running:
             return "Running"
         case .walking:
@@ -240,8 +269,13 @@ struct RingButton: View {
             return "Hiking"
         }
     }
-    
+    //
     func didDismiss() {
-        // Handle the dismissing action.
+        showAlert = false
+        vm.newFormData = newFormData.empty
+    }
+    
+    func resetForm() {
+        vm.newFormData = newFormData.empty
     }
 }

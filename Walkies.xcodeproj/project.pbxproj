@@ -14,12 +14,14 @@
 		D339F2BF2BDA613E00F4BAC0 /* WalkiesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D339F2BE2BDA613E00F4BAC0 /* WalkiesTests.swift */; };
 		D339F2C92BDA613E00F4BAC0 /* WalkiesUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D339F2C82BDA613E00F4BAC0 /* WalkiesUITests.swift */; };
 		D339F2CB2BDA613E00F4BAC0 /* WalkiesUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D339F2CA2BDA613E00F4BAC0 /* WalkiesUITestsLaunchTests.swift */; };
+		D33B1EDF2BE4E16A00840D5C /* HistoryDatePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = D33B1EDE2BE4E16A00840D5C /* HistoryDatePicker.swift */; };
 		D39779FB2BE0696200C21B08 /* ResultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D39779FA2BE0696200C21B08 /* ResultView.swift */; };
 		D3A4180C2BE0D55C00A461AD /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3A4180B2BE0D55C00A461AD /* MainView.swift */; };
 		D3A4180E2BE0D5A800A461AD /* RingButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3A4180D2BE0D5A800A461AD /* RingButton.swift */; };
 		D3A418102BE0D5F000A461AD /* Picker.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3A4180F2BE0D5F000A461AD /* Picker.swift */; };
 		D3A418142BE21CDD00A461AD /* HistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3A418132BE21CDD00A461AD /* HistoryView.swift */; };
 		D3A418172BE3793500A461AD /* ProcessInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3A418162BE3793500A461AD /* ProcessInput.swift */; };
+		D3A4181A2BE3D86E00A461AD /* FormData.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3A418192BE3D86E00A461AD /* FormData.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -50,12 +52,14 @@
 		D339F2C42BDA613E00F4BAC0 /* WalkiesUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WalkiesUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D339F2C82BDA613E00F4BAC0 /* WalkiesUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalkiesUITests.swift; sourceTree = "<group>"; };
 		D339F2CA2BDA613E00F4BAC0 /* WalkiesUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalkiesUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		D33B1EDE2BE4E16A00840D5C /* HistoryDatePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryDatePicker.swift; sourceTree = "<group>"; };
 		D39779FA2BE0696200C21B08 /* ResultView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultView.swift; sourceTree = "<group>"; };
 		D3A4180B2BE0D55C00A461AD /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		D3A4180D2BE0D5A800A461AD /* RingButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RingButton.swift; sourceTree = "<group>"; };
 		D3A4180F2BE0D5F000A461AD /* Picker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Picker.swift; sourceTree = "<group>"; };
 		D3A418132BE21CDD00A461AD /* HistoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryView.swift; sourceTree = "<group>"; };
 		D3A418162BE3793500A461AD /* ProcessInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProcessInput.swift; sourceTree = "<group>"; };
+		D3A418192BE3D86E00A461AD /* FormData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormData.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -110,6 +114,7 @@
 				D39779F92BE0694000C21B08 /* View */,
 				D39779F62BE0689D00C21B08 /* Interface */,
 				D339F2AF2BDA613D00F4BAC0 /* ContentView.swift */,
+				D3A418182BE3D86100A461AD /* Data */,
 				D339F2AD2BDA613D00F4BAC0 /* WalkiesApp.swift */,
 				D339F2B12BDA613E00F4BAC0 /* Assets.xcassets */,
 				D339F2B32BDA613E00F4BAC0 /* Preview Content */,
@@ -147,6 +152,7 @@
 			children = (
 				D3A4180D2BE0D5A800A461AD /* RingButton.swift */,
 				D3A4180F2BE0D5F000A461AD /* Picker.swift */,
+				D33B1EDE2BE4E16A00840D5C /* HistoryDatePicker.swift */,
 			);
 			path = Interface;
 			sourceTree = "<group>";
@@ -167,6 +173,14 @@
 				D3A418162BE3793500A461AD /* ProcessInput.swift */,
 			);
 			path = Utilities;
+			sourceTree = "<group>";
+		};
+		D3A418182BE3D86100A461AD /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				D3A418192BE3D86E00A461AD /* FormData.swift */,
+			);
+			path = Data;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -299,8 +313,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D33B1EDF2BE4E16A00840D5C /* HistoryDatePicker.swift in Sources */,
 				D339F2B02BDA613D00F4BAC0 /* ContentView.swift in Sources */,
 				D3A418142BE21CDD00A461AD /* HistoryView.swift in Sources */,
+				D3A4181A2BE3D86E00A461AD /* FormData.swift in Sources */,
 				D39779FB2BE0696200C21B08 /* ResultView.swift in Sources */,
 				D3A418102BE0D5F000A461AD /* Picker.swift in Sources */,
 				D3A418172BE3793500A461AD /* ProcessInput.swift in Sources */,
