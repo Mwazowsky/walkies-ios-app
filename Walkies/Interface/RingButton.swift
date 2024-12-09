@@ -61,6 +61,8 @@ struct RingButton: View {
     @Binding var linkActive : Bool
     @Binding var showAlert : Bool
     
+    let action : (_ formData : newFormData) -> Void
+    
     private static let formatter: NumberFormatter = {
         let formatter = NumberFormatter()
         formatter.numberStyle = .decimal
@@ -94,13 +96,17 @@ struct RingButton: View {
                 .foregroundColor(.white)
                 .navigationDestination(
                     isPresented: $linkActive) {
-                        ResultView()
+                        ResultView(vm: vm)
                     }
             }
             
         }
         .sheet(isPresented: $isShowingSheet,
-               onDismiss: didDismiss) {
+               onDismiss: {
+                    didDismiss()
+                    print(vm.newFormData)
+            
+        }) {
             VStack(alignment: .leading) {
                 HStack {
                     Spacer()
@@ -154,7 +160,7 @@ struct RingButton: View {
                                 .keyboardType(.numberPad)
                         }
                     }
-                    //
+                    
                     Section(header:
                                 Text("Activity Details")
                         .fontWeight(.bold)
@@ -202,6 +208,7 @@ struct RingButton: View {
                     Section {
                         VStack {
                             Button {
+                                action(vm.newFormData)
                                 isShowingSheet.toggle()
                                 self.linkActive = true
                             } label: {
@@ -217,11 +224,14 @@ struct RingButton: View {
                                     .foregroundColor(.buttonRingTwo)
                                 Spacer()
                             }
+                            .disabled(!vm.isValid)
                             .buttonStyle(.bordered)
                             .padding(.bottom, 5)
                             
                             Button {
-                                resetForm()
+                                withAnimation {
+                                    vm.resetForm()
+                                }
                             } label: {
                                 Spacer()
                                 Text("Reset Input")
@@ -272,10 +282,7 @@ struct RingButton: View {
     //
     func didDismiss() {
         showAlert = false
-        vm.newFormData = newFormData.empty
-    }
-    
-    func resetForm() {
-        vm.newFormData = newFormData.empty
+        vm.saveFormData()
+        vm.resetForm()
     }
 }

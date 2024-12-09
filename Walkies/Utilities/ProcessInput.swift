@@ -21,6 +21,7 @@ struct ProcessInput {
         let distanceKm = distance / 1000.0
         let speedKmPerHour = distanceKm / 12.0
         let speedMetersPerMinute = speedKmPerHour * 1000.0 / 60.0
+        
         return speedMetersPerMinute * 1000
     }
     
@@ -28,6 +29,30 @@ struct ProcessInput {
         let caloriesFromResting = (age * 0.2017) + (weight * 0.09036) + (heartRate * 0.6309) - 55.0969
         let caloriesFromExercise = ((timeInMinutes / 4.184) * ((0.2 * metersPerMinute) + (0.9 * metersPerMinute * fractionalGrade) + 3.5))
         let totalCaloriesBurned = caloriesFromResting + caloriesFromExercise
+        
+        return totalCaloriesBurned
+    }
+    
+    func calculateCaloriesBurnedv2(age: Double, weight: Double, heartRate: Double, timeInMinutes: Double, metersPerMinute: Double, fractionalGrade: Double, activityType: String) -> Double {
+        // Define MET values for different activities
+        let MET_VALUES: [String: Double] = [
+            "running": 8.0,
+            "jogging": 6.0,
+            "hiking": 4.5,
+            "walking": 3.5
+        ]
+        
+        guard let metValue = MET_VALUES[activityType] else {
+            return 0
+        }
+        
+        // Calculate calories burned from exercise using the MET value
+        let caloriesFromExercise = (timeInMinutes / 60.0) * (weight * metValue)
+        
+        // Calculate total calories burned including calories from resting
+        let caloriesFromResting = (age * 0.2017) + (weight * 0.09036) + (heartRate * 0.6309) - 55.0969
+        let totalCaloriesBurned = caloriesFromResting + caloriesFromExercise
+        
         return totalCaloriesBurned
     }
 }

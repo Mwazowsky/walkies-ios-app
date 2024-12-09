@@ -121,7 +121,7 @@ struct HistoryView: View {
                     
                     Section(
                     ) {
-                        CardView()
+//                        CardView(vm: FormData)
                     }
                     
                     HStack(alignment: .center, content: {

@@ -47,4 +47,21 @@ extension newFormData.ActivityDetails {
 
 final class FormData: ObservableObject {
     @Published var newFormData : newFormData = .empty
+    @Published var savedFormData : newFormData = .empty
+    
+    var isValid : Bool {
+        !newFormData.physicalDetails.age.isEmpty &&
+        !newFormData.physicalDetails.weight.isEmpty &&
+        !newFormData.physicalDetails.bpm.isEmpty &&
+        !newFormData.activityDetails.distance.isEmpty &&
+        !newFormData.activityDetails.surfGrade.isEmpty
+    }
+    
+    func resetForm() {
+        self.newFormData = .empty
+    }
+    
+    func saveFormData() {
+        self.savedFormData = newFormData
+    }
 }

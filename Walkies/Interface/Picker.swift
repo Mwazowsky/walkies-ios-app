@@ -39,14 +39,12 @@ struct HistoryDatePicker: View {
     var body: some View {
         VStack {
             DatePicker(
-                "Pick a date",
+                "",
                 selection: $selectedDate,
                 in: dateRange,
                 displayedComponents: [.date])
                 .padding()
                 .datePickerStyle(.wheel)
-            
-            Text("Selected Date: \(formattedDate)")
         }
     }
     

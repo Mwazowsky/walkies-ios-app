@@ -26,10 +26,15 @@ struct ContentView: View {
                 fillColor: LinearGradient(gradient: Gradient(colors: [.buttonRingTwo, .buttonRingOne]), startPoint: .top, endPoint: .bottom),
                 isShowingSheet: $isShowingSheet,
                 linkActive: $linkActive,
-                showAlert: $showAlert
+                showAlert: $showAlert,
+                action: action
             )
         }
         .preferredColorScheme(.dark)
+    }
+    
+    private func action(newFormData: newFormData) -> Void {
+        print(newFormData)
     }
 }
 
