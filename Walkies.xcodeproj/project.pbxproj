@@ -17,6 +17,11 @@
 		D33B1EDF2BE4E16A00840D5C /* HistoryDatePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = D33B1EDE2BE4E16A00840D5C /* HistoryDatePicker.swift */; };
 		D33B1EE12BE5FBCF00840D5C /* ResultViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D33B1EE02BE5FBCF00840D5C /* ResultViewModel.swift */; };
 		D39779FB2BE0696200C21B08 /* ResultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D39779FA2BE0696200C21B08 /* ResultView.swift */; };
+		D39D448C2D06DCF300929068 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D39D448B2D06DCEF00929068 /* HomeView.swift */; };
+		D39D448F2D06DD8C00929068 /* Job.swift in Sources */ = {isa = PBXBuildFile; fileRef = D39D448E2D06DD6C00929068 /* Job.swift */; };
+		D39D44912D06DE5300929068 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = D39D44902D06DE5100929068 /* API.swift */; };
+		D39D44932D06DFA900929068 /* JobsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D39D44922D06DFA200929068 /* JobsView.swift */; };
+		D39D44952D06E44400929068 /* HeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D39D44942D06E44100929068 /* HeaderView.swift */; };
 		D3A4180C2BE0D55C00A461AD /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3A4180B2BE0D55C00A461AD /* MainView.swift */; };
 		D3A4180E2BE0D5A800A461AD /* RingButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3A4180D2BE0D5A800A461AD /* RingButton.swift */; };
 		D3A418102BE0D5F000A461AD /* Picker.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3A4180F2BE0D5F000A461AD /* Picker.swift */; };
@@ -56,6 +61,11 @@
 		D33B1EDE2BE4E16A00840D5C /* HistoryDatePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryDatePicker.swift; sourceTree = "<group>"; };
 		D33B1EE02BE5FBCF00840D5C /* ResultViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultViewModel.swift; sourceTree = "<group>"; };
 		D39779FA2BE0696200C21B08 /* ResultView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultView.swift; sourceTree = "<group>"; };
+		D39D448B2D06DCEF00929068 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		D39D448E2D06DD6C00929068 /* Job.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Job.swift; sourceTree = "<group>"; };
+		D39D44902D06DE5100929068 /* API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
+		D39D44922D06DFA200929068 /* JobsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JobsView.swift; sourceTree = "<group>"; };
+		D39D44942D06E44100929068 /* HeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderView.swift; sourceTree = "<group>"; };
 		D3A4180B2BE0D55C00A461AD /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		D3A4180D2BE0D5A800A461AD /* RingButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RingButton.swift; sourceTree = "<group>"; };
 		D3A4180F2BE0D5F000A461AD /* Picker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Picker.swift; sourceTree = "<group>"; };
@@ -112,6 +122,7 @@
 		D339F2AC2BDA613D00F4BAC0 /* Walkies */ = {
 			isa = PBXGroup;
 			children = (
+				D39D448D2D06DD5C00929068 /* Models */,
 				D3A418152BE36E9B00A461AD /* Utilities */,
 				D39779F92BE0694000C21B08 /* View */,
 				D39779F62BE0689D00C21B08 /* Interface */,
@@ -162,17 +173,29 @@
 		D39779F92BE0694000C21B08 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				D39D44942D06E44100929068 /* HeaderView.swift */,
 				D39779FA2BE0696200C21B08 /* ResultView.swift */,
 				D3A418132BE21CDD00A461AD /* HistoryView.swift */,
 				D3A4180B2BE0D55C00A461AD /* MainView.swift */,
+				D39D448B2D06DCEF00929068 /* HomeView.swift */,
+				D39D44922D06DFA200929068 /* JobsView.swift */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		D39D448D2D06DD5C00929068 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				D39D448E2D06DD6C00929068 /* Job.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 		D3A418152BE36E9B00A461AD /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
 				D3A418162BE3793500A461AD /* ProcessInput.swift */,
+				D39D44902D06DE5100929068 /* API.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -250,7 +273,7 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 1530;
-				LastUpgradeCheck = 1530;
+				LastUpgradeCheck = 1600;
 				TargetAttributes = {
 					D339F2A92BDA613D00F4BAC0 = {
 						CreatedOnToolsVersion = 15.3;
@@ -318,15 +341,20 @@
 			files = (
 				D33B1EDF2BE4E16A00840D5C /* HistoryDatePicker.swift in Sources */,
 				D339F2B02BDA613D00F4BAC0 /* ContentView.swift in Sources */,
+				D39D448F2D06DD8C00929068 /* Job.swift in Sources */,
 				D3A418142BE21CDD00A461AD /* HistoryView.swift in Sources */,
 				D33B1EE12BE5FBCF00840D5C /* ResultViewModel.swift in Sources */,
 				D3A4181A2BE3D86E00A461AD /* FormViewModel.swift in Sources */,
+				D39D44912D06DE5300929068 /* API.swift in Sources */,
 				D39779FB2BE0696200C21B08 /* ResultView.swift in Sources */,
 				D3A418102BE0D5F000A461AD /* Picker.swift in Sources */,
 				D3A418172BE3793500A461AD /* ProcessInput.swift in Sources */,
 				D3A4180E2BE0D5A800A461AD /* RingButton.swift in Sources */,
+				D39D44932D06DFA900929068 /* JobsView.swift in Sources */,
+				D39D448C2D06DCF300929068 /* HomeView.swift in Sources */,
 				D3A4180C2BE0D55C00A461AD /* MainView.swift in Sources */,
 				D339F2AE2BDA613D00F4BAC0 /* WalkiesApp.swift in Sources */,
+				D39D44952D06E44400929068 /* HeaderView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -543,7 +571,6 @@
 		D339F2D22BDA613E00F4BAC0 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
@@ -563,7 +590,6 @@
 		D339F2D32BDA613E00F4BAC0 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
@@ -583,7 +609,6 @@
 		D339F2D52BDA613E00F4BAC0 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 397FG78S7G;
@@ -601,7 +626,6 @@
 		D339F2D62BDA613E00F4BAC0 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 397FG78S7G;

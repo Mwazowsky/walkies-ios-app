@@ -11,7 +11,7 @@ import SwiftUI
 struct MainView: View {
     var body: some View {
         TabView {
-            ContentView()
+            JobsView()
                 .tabItem {
                     VStack {
                         Image(systemName: "flame.fill")
