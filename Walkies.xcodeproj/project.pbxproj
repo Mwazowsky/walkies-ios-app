@@ -21,7 +21,6 @@
 		D39D448F2D06DD8C00929068 /* Job.swift in Sources */ = {isa = PBXBuildFile; fileRef = D39D448E2D06DD6C00929068 /* Job.swift */; };
 		D39D44912D06DE5300929068 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = D39D44902D06DE5100929068 /* API.swift */; };
 		D39D44932D06DFA900929068 /* JobsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D39D44922D06DFA200929068 /* JobsView.swift */; };
-		D39D44952D06E44400929068 /* HeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D39D44942D06E44100929068 /* HeaderView.swift */; };
 		D3A4180C2BE0D55C00A461AD /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3A4180B2BE0D55C00A461AD /* MainView.swift */; };
 		D3A4180E2BE0D5A800A461AD /* RingButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3A4180D2BE0D5A800A461AD /* RingButton.swift */; };
 		D3A418102BE0D5F000A461AD /* Picker.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3A4180F2BE0D5F000A461AD /* Picker.swift */; };
@@ -65,7 +64,6 @@
 		D39D448E2D06DD6C00929068 /* Job.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Job.swift; sourceTree = "<group>"; };
 		D39D44902D06DE5100929068 /* API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
 		D39D44922D06DFA200929068 /* JobsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JobsView.swift; sourceTree = "<group>"; };
-		D39D44942D06E44100929068 /* HeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderView.swift; sourceTree = "<group>"; };
 		D3A4180B2BE0D55C00A461AD /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		D3A4180D2BE0D5A800A461AD /* RingButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RingButton.swift; sourceTree = "<group>"; };
 		D3A4180F2BE0D5F000A461AD /* Picker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Picker.swift; sourceTree = "<group>"; };
@@ -173,7 +171,6 @@
 		D39779F92BE0694000C21B08 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				D39D44942D06E44100929068 /* HeaderView.swift */,
 				D39779FA2BE0696200C21B08 /* ResultView.swift */,
 				D3A418132BE21CDD00A461AD /* HistoryView.swift */,
 				D3A4180B2BE0D55C00A461AD /* MainView.swift */,
@@ -354,7 +351,6 @@
 				D39D448C2D06DCF300929068 /* HomeView.swift in Sources */,
 				D3A4180C2BE0D55C00A461AD /* MainView.swift in Sources */,
 				D339F2AE2BDA613D00F4BAC0 /* WalkiesApp.swift in Sources */,
-				D39D44952D06E44400929068 /* HeaderView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
